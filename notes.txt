@@ -1,0 +1,140 @@
+/// Backend api
+AUTH
+Log in ===>country_code,phone,password
+register ====>first_name,last_name,email,phone,country_code,password
+forget password ===>email
+send otp ==>code
+resend code
+reset password ====>password,confirm_password
+==========================================
+choose language
+fetch currency
+post language ,currency ======>language,currency
+=============================
+fetch terms and condition
+================================
+fetch reservation date and time
+fetch room type ,price , bus map of the selected date
+
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "trip_01",
+      "day": "الخميس",
+      "date": "24 أكتوبر 2025",
+      "duration": "11 يوم",
+      "price": 150.0,
+      "currency": "SAR",
+      "seats": [
+        { "id": "s1", "label": "1A", "type": "premium", "taken": false ,status:door},
+        { "id": "s2", "label": "1B", "type": "premium", "taken": true,status:seat },
+        { "id": "s3", "label": "1C", "type": "available", "taken": false,status:driver },
+        { "id": "s4", "label": "1D", "type": "available", "taken": false,status:seat },
+        { "id": "s5", "label": "2A", "type": "available", "taken": false ,status:seat}
+      ]
+      "room":[
+      {"id":1,label:"single",price:30},
+            {"id":2,label:"double",price:30}
+
+      ]
+    },
+    {
+      "id": "trip_02",
+      "day": "السبت",
+      "date": "26 أكتوبر 2025",
+      "duration": "11 يوم",
+      "price": 150.0,
+      "currency": "SAR",
+      "seats": [
+        { "id": "s1", "label": "1A", "type": "available", "taken": false,status:seat },
+        { "id": "s2", "label": "1B", "type": "available", "taken": false ,status :door}
+      ]
+      "room":[
+            {"id":1,label:"single",price:30},
+                  {"id":2,label:"double",price:30}
+
+            ]
+    }
+  ]
+}
+===================================================
+fetch price details  of reservation
+{
+  "booking_details": {
+    "service": "Umrah Permit",
+    "date": "2026-02-20",
+    "time": "08:00",
+    "total_price": 0.00,
+    "currency": "SAR"
+  }
+}
+=======================================
+fetch ki net url
+======================================
+post of reservation details
+body
+{
+  "trip_id": "trip_01",
+  "selected_date": "2025-10-24",
+  "selected_seats": [
+    {"id": "s1", "label": "1A"},
+    {"id": "s4", "label": "1D"}
+  ],
+  "selected_rooms":  {"id": 1, "count": 1},
+  "language": "ar",
+  "currency": "SAR"
+}
+////new api backend
+i want in fetch trips data in room
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "trip_01",
+      "day": "الخميس",
+      "date": "24 أكتوبر 2025",
+      "duration": "11 يوم",
+      "price": 150.0,
+      "currency": "SAR",
+      "seats": [
+        { "id": "s1", "label": "1A", "type": "premium", "taken": false ,status:door},
+        { "id": "s2", "label": "1B", "type": "premium", "taken": true,status:seat },
+        { "id": "s3", "label": "1C", "type": "available", "taken": false,status:driver },
+        { "id": "s4", "label": "1D", "type": "available", "taken": false,status:seat },
+        { "id": "s5", "label": "2A", "type": "available", "taken": false ,status:seat}
+      ]
+      "room":[
+      {"id":1,label:"single",price:30},
+            {"id":2,label:"double",price:30}
+
+      ]
+    },
+    {
+      "id": "trip_02",
+      "day": "السبت",
+      "date": "26 أكتوبر 2025",
+      "duration": "11 يوم",
+
+      "price": 150.0,
+      "currency": "SAR",
+      "seats": [
+        { "id": "s1", "label": "1A", "type": "available", "taken": false,status:seat },
+        { "id": "s2", "label": "1B", "type": "available", "taken": false ,status :door}
+      ]
+      "room":[
+            {"id":1,label:"single",price:30},
+                  {"id":2,label:"double",price:30}
+
+            ]
+    }
+  ]
+}
+api for resend code
+api for log out
+make error response of sign up as log in
+///////////////////////////////new requirement
+fetch ki net url ,
+make quest register
+post reservation details
+
