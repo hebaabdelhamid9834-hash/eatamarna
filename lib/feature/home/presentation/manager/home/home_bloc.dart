@@ -61,13 +61,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   _selectTrip(SelectTripEvent event, Emitter<HomeState> emit) {
     tripId = event.tripId;
     selectedDate = event.date;
+    emit(SelectTripSuccessState());
   }
   void _selectSeats(SelectSeatsEvent event, Emitter<HomeState> emit) {
     seats = event.seats;
+    emit(SelectSeatsSuccessState());
   }
 
   void _selectPrice(SelectPriceEvent event, Emitter<HomeState> emit) {
     selectedPrice = event.price;
+    emit(SelectPriceSuccessState());
   }
   _getTrip(GetTripResponseEvent event,Emitter<HomeState>emit )async{
     emit(LoadingGetTripState());

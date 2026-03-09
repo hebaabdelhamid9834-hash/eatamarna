@@ -28,6 +28,8 @@ String formatDate(String arabicDate) {
   };
 
   final parts = arabicDate.trim().split(' ');
+print("parts ${parts}");
+print("month ${months[parts[1]]}");
 
   final day = parts[0].padLeft(2, '0');
   final month = months[parts[1]] ?? '01';
@@ -60,6 +62,7 @@ class HomeRepositoryImpl {
   {
     String seatsQuery = seatsId.map((e) => "seats[]=$e").join("&");
     print("seat query ${seatsQuery}");
+    print("date ${selectedDate}");
     String apiDate = formatDate(selectedDate);
     print("selected_date ${apiDate}");
 

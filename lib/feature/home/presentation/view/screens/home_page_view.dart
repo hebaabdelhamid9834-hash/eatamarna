@@ -35,7 +35,7 @@ class _HomePageViewState extends State<HomePageView> {
   int _activeStep = 0;
   final PageController _pageController = PageController();
   void _goToStep(int index, BuildContext context) {
-    if (index == 0 || index == 1 || index == 3) {
+    if (index == 0 || index == 3) {
       context.read<HomeBloc>().add(ResetBookingEvent());
     }
     setState(() => _activeStep = index);

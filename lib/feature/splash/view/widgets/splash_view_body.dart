@@ -79,7 +79,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           listener: (context, state) async {
             if (state is SuccessChangeLanguageCurrency) {
              // if (await TokenStorageService().hasToken()) {
-                context.pushNamed(RouterPath.home);
+             //    context.pushNamed(RouterPath.home);
               // } else {
               //   context.pushNamed(RouterPath.login);
               // }
@@ -136,6 +136,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
                             language: language,
                             currency: currency,
                           ));
+                          context.pushNamed(RouterPath.home);
+
                         },
                         child: Container(
                           margin: EdgeInsets.all(5.w),

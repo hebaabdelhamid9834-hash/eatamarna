@@ -52,3 +52,6 @@ class SuccessGetPaymentUrlState extends HomeState{
   SuccessGetPaymentUrlState({required this.url});
 }
 class ChangePaymentUrlState extends HomeState{}
+class SelectTripSuccessState extends HomeState{}
+class SelectSeatsSuccessState extends HomeState{}
+class SelectPriceSuccessState extends HomeState{}
