@@ -55,3 +55,13 @@ class ChangePaymentUrlState extends HomeState{}
 class SelectTripSuccessState extends HomeState{}
 class SelectSeatsSuccessState extends HomeState{}
 class SelectPriceSuccessState extends HomeState{}
+
+class LoadingGetKinetStatusState extends HomeState {}
+class ErrorGetKinetStatusState extends HomeState {
+  final String error;
+  ErrorGetKinetStatusState({required this.error});
+}
+class SuccessGetKinetStatusState extends HomeState {
+  final bool isVisible;
+  SuccessGetKinetStatusState({required this.isVisible});
+}

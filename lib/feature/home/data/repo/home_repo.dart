@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:eatamarna/core/failure/failures.dart';
+import 'package:eatamarna/core/network/api_end_points.dart' show ApisEndpoints;
 import 'package:eatamarna/core/network/api_service.dart';
 import 'package:eatamarna/core/network/tocken_storage_service.dart';
 import 'package:eatamarna/core/storage/preference_manager.dart';
@@ -159,7 +160,19 @@ class HomeRepositoryImpl {
       return Left(e);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
+    }}
+  Future<Either<Failure, bool>> getKinetStatus() async {
+    try {
+      final response = await _apiService.get(urlEndPoint: ApisEndpoints.kinetStatus);
+      print("url ${ApisEndpoints.kinetStatus}");
+      if (response['status'] is bool) {
+        return Right(response['status']);
+      }
+      return Right(response['status'] == 1 || response['status'] == "1" || response['status'] == true);
+    } on ServerFailure catch (e) {
+      return Left(e);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
     }
   }
-
 }

@@ -89,7 +89,8 @@ class _HomePageViewState extends State<HomePageView> {
       child: BlocProvider(
         create: (context) =>
         HomeBloc(context.read<HomeRepositoryImpl>())
-          ..add(GetTripResponseEvent()),
+          ..add(GetTripResponseEvent())
+          ..add(GetKinetStatusEvent()),
         child: BlocConsumer<HomeBloc, HomeState>(
           buildWhen: (previous, current) =>
               current is SuccessGetBookingCodeState ||

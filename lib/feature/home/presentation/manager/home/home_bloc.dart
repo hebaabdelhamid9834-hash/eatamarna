@@ -23,6 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetPaymentUrlEvent>(_getPaymentUrl);
     on<ChangePaymentMethod>(_changePayment);
     on<ResetBookingEvent>(_resetBooking);
+    on<GetKinetStatusEvent>(_getKinetStatus);
   }
   final HomeRepositoryImpl _homeRepositoryImpl;
   TripResponse? tripResponse;
@@ -41,6 +42,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   String countryCode = "965";
+  bool isKinetVisible = false;
 
   _resetBooking(ResetBookingEvent event, Emitter<HomeState> emit) {
     tripResponse = null;
@@ -158,5 +160,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }, (url){
       emit(SuccessGetPaymentUrlState(url: url??''));
     });
+  }
+  _getKinetStatus(GetKinetStatusEvent event, Emitter<HomeState> emit) async {
+    emit(LoadingGetKinetStatusState());
+    final result = await _homeRepositoryImpl.getKinetStatus();
+    result.fold(
+      (failure) {
+        emit(ErrorGetKinetStatusState(error: failure.errorMessage));
+      },
+      (isVisible) {
+        isKinetVisible = isVisible;
+        emit(SuccessGetKinetStatusState(isVisible: isVisible));
+      },
+    );
   }
 }

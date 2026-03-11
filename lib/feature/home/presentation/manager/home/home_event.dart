@@ -42,3 +42,5 @@ class ChangePaymentMethod extends HomeEvent{
 }
 
 class ResetBookingEvent extends HomeEvent {}
+
+class GetKinetStatusEvent extends HomeEvent {}
